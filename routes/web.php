@@ -252,11 +252,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
+/*
 Route::get('/', function () {
     return '!!!';
 });
 Route::get('/about', function () {
     return 'about page';
+});
+*/
+Route::get('/', function () {
+    return view('migrate');
 });
 Route::get('/about/{id}', function ($id) {
     return 'Номер страницы ' . $id;
