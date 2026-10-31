@@ -1,10 +1,15 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider; /* Глобальное ограничение */
 use App\Http\Controllers\PostController; /* Покдлючение контроллера */
 use App\Http\Controllers\TestController; /* Покдлючение контроллера */
+use App\Http\Controllers\RequestController; /* 114. Покдлючение контроллера */
+
+Route::get('/migration', [RequestController::class, 'show']);
+
 
 Route::get('/newpost', [PostController::class, 'show']); // Сокращенная запись обращения к контроллеру
 Route::get('/newposts', [PostController::class, 'all']); // Обращение ко второму методу контроллера
