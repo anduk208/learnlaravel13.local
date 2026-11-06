@@ -3,9 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
+    // 165. Получение данных из моделей Eloquent в Laravel
+    public function data()
+    {
+        // через построитель запросов
+        $posts = DB::table('posts')
+            ->where('id', '>', 3)
+            ->get();
+        // тоже самое через модель
+        $posts = Post::where('id', '>', 200)->get();
+
+        foreach ($posts as $post) {
+            dump($post->title);
+            dump($post->text);
+        }
+    }
     public function oldshow($id)
     {
         $posts = [
