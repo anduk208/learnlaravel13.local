@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -10,6 +11,10 @@ use App\Http\Controllers\RequestController; /* 114. Покдлючение ко�
 
 Route::get('/migration', [RequestController::class, 'show']);
 
+// 181. Получени данных связь один ко многим
+Route::get('/order/client', [OrderController::class, 'show']);
+// 189. Жадная загрузка множественных отношений
+Route::get('/order/client/index', [OrderController::class, 'index']);
 
 Route::get('/newpost', [PostController::class, 'show']); // Сокращенная запись обращения к контроллеру
 Route::get('/newposts', [PostController::class, 'all']); // Обращение ко второму методу контроллера
@@ -17,6 +22,9 @@ Route::get('/longpost', [\App\Http\Controllers\Controller::class, '#']); // Уд
 
 // 165. Получение данных из моделей Eloquent в Laravel
 Route::get('/rarepost/data', [PostController::class, 'data']);
+// 167. Передача представление
+Route::get('/rarepost/view', [PostController::class, 'view']);
+Route::get('/rarepost/create', [PostController::class, 'create']);
 
 Route::get('/rarepost/{surname}/{name}', [PostController::class, 'newshow']);
 Route::get('/oldshow/{id}', [PostController::class, 'oldshow']);

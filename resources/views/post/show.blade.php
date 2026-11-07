@@ -8,14 +8,25 @@
     <title>Получение данных</title>
 </head>
 <body>
+
+@if($posts)
+    <p><b>Количество лайков на посте: </b>{{ $posts->likes }}</p>
+    <p><b>Зашифрованный текст: </b>{{ $posts->text }}</p>
+    <p><b>URL-токен пост: </b>{{ $posts->slug }}</p>
+@else
+    <p>Пост не найден</p>
+@endif
+
 <!-- 122. Получение одной строки -->
+{{--
 <div>
-    <h2>{{ $post->title }}</h2>
-    <h2>{{ $post->id }}</h2>
+    <h2>{{ $posts->title }}</h2>
+    <h2>{{ $posts->id }}</h2>
     <div>
-        {{ $post->text }}
+        {{ $posts->text }}
     </div>
 </div>
+--}}
 <!-- Работа с коллекцией -->
 {{--
     @foreach($posts as $post)

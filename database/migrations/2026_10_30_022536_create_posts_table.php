@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('text');
             $table->integer('likes');
             $table->timestamps();
+            $table->softDeletes();
             /*
             $table->integer('age')
                 ->unsigned()
