@@ -16,6 +16,10 @@ Route::get('/order/client', [OrderController::class, 'show']);
 // 189. Жадная загрузка множественных отношений
 Route::get('/order/client/index', [OrderController::class, 'index']);
 
+// 193. Отправка форм методом GET в Laravel
+Route::get('/from', [OrderController::class, 'form']);
+Route::get('/result', [OrderController::class, 'result']);
+
 Route::get('/newpost', [PostController::class, 'show']); // Сокращенная запись обращения к контроллеру
 Route::get('/newposts', [PostController::class, 'all']); // Обращение ко второму методу контроллера
 Route::get('/longpost', [\App\Http\Controllers\Controller::class, '#']); // Удлиненная запись
