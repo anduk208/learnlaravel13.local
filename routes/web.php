@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider; /* Глобальное ограниче
 use App\Http\Controllers\PostController; /* Покдлючение контроллера */
 use App\Http\Controllers\TestController; /* Покдлючение контроллера */
 use App\Http\Controllers\RequestController; /* 114. Покдлючение контроллера */
+use App\Http\Controllers\ValidationController; /* 114. Покдлючение контроллера */
 
 Route::get('/migration', [RequestController::class, 'show']);
 
@@ -19,6 +20,29 @@ Route::get('/order/client/index', [OrderController::class, 'index']);
 // 193. Отправка форм методом GET в Laravel
 Route::get('/from', [OrderController::class, 'form']);
 Route::get('/result', [OrderController::class, 'result']);
+
+// 194. Отправка форм методом POST в Laravel
+Route::post('/result', [OrderController::class, 'result']);
+
+// 195. Форма и ее обработка в одном действии в Laravel
+Route::match(['get', 'post'], '/form1', [OrderController::class, 'form1']);
+
+// 196. Данные формы в виде массива в Laravel
+Route::match(['get', 'post'], '/form2', [OrderController::class, 'form2']);
+// 197. Получение части данных формы в Laravel
+Route::match(['get', 'post'], '/user1', [OrderController::class, 'user']);
+// 198 Исключение части данных формы в Laravel
+Route::match(['get', 'post'], '/user2', [OrderController::class, 'user1']);
+// 199 Сложные имена полей в формах в Laravel
+Route::match(['get', 'post'], '/user3', [OrderController::class, 'user2']);
+// 200 Внедрение зависимости и параметры маршрута в Laravel
+//Route::post('/post/{id}', [PostController::class, 'test']);
+Route::match(['get', 'post'], '/user/{id}/{login}', [OrderController::class, 'test1']);
+// 201 Сохранение данных формы в БД в Laravel
+//Route::post('/post', [OrderController::class, 'store']);
+//Route::match(['get', 'post'],'/user4', [OrderController::class, 'user4']);
+// 203-209 Форма для проверки в Laravel
+Route::match(['get', 'post'], '/post/form', [ValidationController::class, 'form']);
 
 Route::get('/newpost', [PostController::class, 'show']); // Сокращенная запись обращения к контроллеру
 Route::get('/newposts', [PostController::class, 'all']); // Обращение ко второму методу контроллера
